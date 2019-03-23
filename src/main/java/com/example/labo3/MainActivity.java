@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mEditUs = findViewById(R.id.et_user);
-        mEditPass = findViewById(R.id.et_password);
+        mEditPass = findViewById(R.id.et_pass);
         mEditEmail = findViewById(R.id.et_email);
         mEditGen = findViewById(R.id.et_gender);
 
