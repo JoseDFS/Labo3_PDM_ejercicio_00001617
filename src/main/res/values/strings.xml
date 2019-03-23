@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">labo3</string>
+    <string name="text_share">share</string>
+    <string name="text_username">Username:</string>
+    <string name="text_password">Password:</string>
+    <string name="text_email">Email:</string>
+    <string name="text_gender">Gender:</string>
+    <string name="text_submit">Submit</string>
 </resources>

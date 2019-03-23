@@ -8,32 +8,43 @@ import android.widget.EditText;
 
 import com.example.labo3.utils.AppConstant;
 
+import static com.example.labo3.utils.AppConstant.EMAIL_KEY;
+import static com.example.labo3.utils.AppConstant.GENDER_KEY;
+import static com.example.labo3.utils.AppConstant.PASS_KEY;
+import static com.example.labo3.utils.AppConstant.USER_KEY;
+
 public class MainActivity extends AppCompatActivity {
-    private EditText mEdit;
-    private Button mButton,mButtonShare;
+    private EditText mEditUs,mEditPass,mEditEmail,mEditGen;
+    private Button mButtonSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mEdit = findViewById(R.id.et_text);
-        mButton = findViewById(R.id.btn_send);
-        mButtonShare = findViewById(R.id.btn_share);
+        mEditUs = findViewById(R.id.et_user);
+        mEditPass = findViewById(R.id.et_password);
+        mEditEmail = findViewById(R.id.et_email);
+        mEditGen = findViewById(R.id.et_gender);
 
-        mButton.setOnClickListener(v ->{
-            String text = mEdit.getText().toString();
+        mButtonSubmit = findViewById(R.id.btn_submit);
+
+
+
+        mButtonSubmit.setOnClickListener(v ->{
+            String user = mEditUs.getText().toString();
+            String pass = mEditPass.getText().toString();
+            String email = mEditEmail.getText().toString();
+            String gender = mEditGen.getText().toString();
             Intent mIntent = new Intent(MainActivity.this,Main2Activity.class);
-            mIntent.putExtra(AppConstant.TEXT_KEY,text);
-            startActivity(mIntent);
-        });
-
-        mButtonShare.setOnClickListener(v ->{
-            String text = mEdit.getText().toString();
-            Intent mIntent = new Intent();
-            mIntent.setType("text/plain");
-            mIntent.setAction(Intent.ACTION_SEND);
-            mIntent.putExtra(Intent.EXTRA_TEXT,text);
+            Bundle extras = new Bundle();
+            extras.putString(USER_KEY, user);
+            extras.putString(PASS_KEY,pass);
+            extras.putString(EMAIL_KEY,email);
+            extras.putString(GENDER_KEY,gender);
+            //mIntent.setType("text/plain");
+            //mIntent.setAction(Intent.ACTION_SEND);
+            mIntent.putExtras(extras);
             startActivity(mIntent);
         });
     }
